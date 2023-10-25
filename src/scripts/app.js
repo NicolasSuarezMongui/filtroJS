@@ -49,6 +49,13 @@ const typeConcept = document.getElementById('typeConcept');
 //----------------------------------------------------------------
 
 // Botones
+document.getElementById("_home").addEventListener("click",()=>{
+    changeView()
+    document.getElementById("home_content").classList.toggle("hidden");
+    document.getElementById("home_content").classList.toggle("active");
+    saveView();
+});
+
 document.getElementById("_campers").addEventListener("click",()=>{
     changeView()
     document.getElementById("campers_content").classList.toggle("hidden");
@@ -70,12 +77,21 @@ document.getElementById("btnAddConcept").addEventListener("click",()=>{
     document.getElementById("addConcept").classList.toggle("active");
 })
 
+document.querySelectorAll("#close").forEach(item => {
+    item.addEventListener("click",(e)=>{
+        const modal = e.target.parentElement.parentElement
+        if(modal.classList.contains("modal")){
+            modal.classList.toggle("hidden");
+        }else{
+            modal.parentElement.classList.toggle("hidden");
+        }
+    })
+})
 //-----------------------------------------------------------------
 
 // funciones
 const saveView = () => {
     const activeView = document.querySelector(".active")
-    console.log(activeView);
     localStorage.setItem("active",activeView.id)
 }
 
@@ -85,6 +101,11 @@ const saveData = () => {
 }
 
 export const updateData = () => {
+    cleanCampersList()
+    cleanConceptsList()
+    document.getElementById("total_campers").innerHTML = campers.totalCamper()
+    document.getElementById("total_coins").innerHTML = campers.totalCampCoins()
+    document.getElementById("total_concepts").innerHTML = concepts.getTotalConcepts()
     campers.campers.forEach((camper) =>{
         document.getElementById("campersTable").append(CamperCard(camper._id, null, camper._fullname, camper._campusGroup, camper._campCoins));
     })
@@ -141,8 +162,7 @@ document.getElementById("newConcept").addEventListener("click",()=>{
 })
 
 document.getElementById("plusCoins").addEventListener("click",()=>{
-    const camper = campers.getCamper(localStorage.getItem("camperPlus"));
-    const coins = parseInt(localStorage.getItem("coinsPlus"))
+    const coins = parseInt(document.getElementById("addSelect").value)
     campers.addCampCoin(localStorage.getItem("camperPlus"),coins)
     cleanCampersList()
     updateData()
@@ -151,11 +171,11 @@ document.getElementById("plusCoins").addEventListener("click",()=>{
 })
 
 document.getElementById("minusCoins").addEventListener("click",()=>{
-    const camper = campers.transform(campers.getCamper(localStorage.getItem("camperPlus")));
-    const coins = localStorage.getItem("coinsPlus")
-    camper.sumCoins(coins)
-    campers.updateCamper(editCamper)
+    const coins = parseInt(document.getElementById("resSelect").value)
+    campers.resCampCoin(localStorage.getItem("camperPlus"),coins)
+    cleanCampersList()
     updateData()
     saveData()
+    document.getElementById("resCoins").classList.toggle("hidden");
 })
 

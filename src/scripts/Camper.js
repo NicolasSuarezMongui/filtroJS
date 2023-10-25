@@ -5,11 +5,7 @@ export default class Camper{
         this._phone = phone;
         this._email = email;
         this._campusGroup = campusGroup;
-        if (campCoins){
-            this._campCoins = campCoins;
-        }{
-            this._campCoins = 0;
-        }
+        this._campCoins = campCoins;
     }
 
     get id(){

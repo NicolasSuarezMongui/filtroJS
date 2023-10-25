@@ -6,10 +6,10 @@ export class ControllerConcepts{
         this.concepts.push(concept)
     }
     getConcept(id){
-        return this.concepts.find(concept => concept._id === id)
+        return this.concepts.find(concept => concept._id == id)
     }
     removeConcept(id){
-        this.concepts = this.concepts.filter(concept => concept._id!== id)
+        this.concepts = this.concepts.filter(concept => concept._id!= id)
     }
     getConcepts(){
         return this.concepts

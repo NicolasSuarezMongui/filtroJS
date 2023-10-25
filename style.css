@@ -4,8 +4,20 @@
     box-sizing: border-box;
 }
 
+.inp {
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
 input {
-    margin-bottom: 5px !important;
+    border: none;
+    outline: none;
+    background: none;
+    width: 260px;
+    margin-top: 40px !important;
+    padding-right: 10px;
+    font-size: 17px;
+    color: #0ef !important;
 }
 
 nav {
@@ -169,4 +181,15 @@ nav.close ~.dashboard #top {
 }
 ::-webkit-scrollbar-thumb:hover{
     background: #000000;
+}
+
+button{
+    background: linear-gradient(45deg, #0ef, #c800ff) !important;
+}
+
+option {
+    background: #16181C;
+    color: #8D96A2;
+    border: none;
+    outline: none;
 }

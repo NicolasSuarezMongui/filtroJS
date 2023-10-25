@@ -30,10 +30,23 @@ export class ControllerCampers {
     }
     resCampCoin(id,campCoins){
         let camper = this.getCamper(id);
-        camper.resCoins(campCoins)
+        let res = parseInt(camper._campCoins);
+        camper._campCoins = res - campCoins
     }
 
     transform(user){
         return new Camper(user._id,user._fullname,user._phone,user._email,user._campusGroup,user._campCoins)
+    }
+
+    totalCamper(){
+        return this._campers.length
+    }
+
+    totalCampCoins(){
+        let total = 0;
+        this._campers.forEach(camper => {
+            total += camper._campCoins
+        })
+        return total
     }
 }

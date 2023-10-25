@@ -1,3 +1,5 @@
+import { ControllerConcepts } from "../scripts/ControllerConcepts.js";
+
 const client_styles = ['concept','flex','items-center','justify-between','px-2.5','w-auto','h-24','border','border-white','rounded-lg','mb-2.5']
 
 
@@ -45,6 +47,24 @@ const clientActions = () => {
     })
 
     const delButton = action("del-client",["fa-solid","fa-trash"])
+
+    delButton.addEventListener("click",()=>{
+        const concepts = new ControllerConcepts()
+        let getConcepts = localStorage.getItem('concepts')
+        if (getConcepts) concepts.concepts = JSON.parse(getConcepts)
+        const concept = concepts.getConcept(actions.parentElement.id)
+
+        console.log(concept);
+        if (concept) {
+            concepts.removeConcept(actions.parentElement.id)
+            localStorage.setItem("concepts",JSON.stringify(concepts.concepts))
+            location.reload();
+        } else {
+            alert("No se pudo eliminar")
+        }
+
+    })
+
     actions.append(editButton, delButton)
     return actions
 }

@@ -66,15 +66,33 @@ const clientActions = () => {
             document.getElementById("addSelect").append(option)
         })
         localStorage.setItem('camperPlus',actions.parentElement.id)
-
         document.getElementById("addCoins").classList.toggle("hidden")
-    })
-    document.getElementById("addSelect").addEventListener("change",()=>{
-        localStorage.setItem('coinsPlus',document.getElementById("addSelect").value)
     })
 
     const resButton = action("view-client",["fa-solid","fa-circle-minus"])
 
+    resButton.addEventListener("click",()=>{
+        const concepts = new ControllerConcepts()
+        const campers = new ControllerCampers()
+
+        let getConcepts = localStorage.getItem('concepts')
+        if (getConcepts) concepts.concepts = JSON.parse(getConcepts)
+
+        let getCampers = localStorage.getItem('campers')
+        if (getCampers) campers.campers = JSON.parse(getCampers)
+
+        document.querySelectorAll("#resSelect option").forEach((items) => items.remove())
+
+        concepts.getResTypes().forEach((item)=>{
+            console.log(item._description);
+            const option = document.createElement("option")
+            option.textContent = item._description
+            option.value = item._coins
+            document.getElementById("resSelect").append(option)
+        })
+        localStorage.setItem('camperPlus',actions.parentElement.id)
+        document.getElementById("resCoins").classList.toggle("hidden")
+    })
 
     const editButton = action("edit-client",["fa-solid","fa-pen-to-square"])
 
@@ -92,7 +110,6 @@ const clientActions = () => {
         if (getCampers) campers.campers = JSON.parse(getCampers)
         const camper = campers.getCamper(actions.parentElement.id)
         if (camper) {
-            console.log('eliminar');
             campers.removeCamper(camper)
             localStorage.setItem("campers",JSON.stringify(campers.campers))
             location.reload();

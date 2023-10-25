@@ -9,56 +9,102 @@
 </head>
 <body class="h-screen w-screen">
 
-    <div class="hidden modal-new-camper absolute bg-zinc-900 w-screen h-screen z-30" id="addCamper">
-        <input type="text" name="id" id="camperID">
-        <input type="text" name="fullname" id="camperName">
-        <input type="number" name="phone" id="camperPhone">
-        <input type="email" name="email" id="camperEmail">
-        <select name="groupselect" id="camperGroup" class="mb-1.5">
-            <option selected>Elegir el grupo del camper</option>
-            <option value="C4">C4</option>
-            <option value="R4">R4</option>
-        </select>
-        <button id="newCamper" class="text-white bg-green-900">Añadir Camper</button>
+    <div class="hidden modal absolute bg-zinc-900 w-screen h-screen z-30 opacity-90 flex items-center justify-center" id="addCamper">
+        <div class="form h-auto bg-transparent flex flex-col items-center p-5 rounded-md">
+            <div class="close text-white cursor-pointer hover:bg-red-900 h-[50px] w-[50px] flex items-center justify-center rounded-full" id="close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="inp">
+                <input type="text" name="id" id="camperID" placeholder="ID">
+            </div>
+            <div class="inp">
+                <input type="text" name="fullname" id="camperName" placeholder="Name">
+            </div>
+            <div class="inp">
+                <input type="number" name="phone" id="camperPhone" placeholder="Phone">
+            </div>
+            <div class="inp">
+                <input type="email" name="email" id="camperEmail" placeholder="Email">
+            </div>
+            <select name="groupselect" id="camperGroup" class="block py-2.5 px-0 w-full text-sm text-gray-300 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer mb-6 mt-[40px]">
+                <option selected>Elegir el grupo del camper</option>
+                <option value="C4">C4</option>
+                <option value="R4">R4</option>
+            </select>
+            <button id="newCamper" class="border-0 outline-0 w-[288px] mt-[25px] py-2.5 px-0 text-[20px] rounded-[40px] tracking-[1px] cursor-pointer hover:scale-110 text-white">Añadir Camper</button>
+        </div>
     </div>
-    <div class="hidden modal-new-camper absolute bg-zinc-900 w-screen h-screen z-30" id="editCamper">
-        <h1>Editar</h1>
-        <input disabled type="text" name="id" id="camperID">
-        <input type="text" name="fullname" id="camperName">
-        <input type="number" name="phone" id="camperPhone">
-        <input type="email" name="email" id="camperEmail">
-        <select name="groupselect" id="camperGroup" class="mb-1.5">
-            <option selected>Elegir el grupo del camper</option>
-            <option value="C4">C4</option>
-            <option value="R4">R4</option>
-        </select>
-        <button id="updateCamper" class="text-white bg-green-900">Editar Camper</button>
+    <div class="hidden modal absolute bg-zinc-900 w-screen h-screen z-30 opacity-90 flex items-center justify-center" id="editCamper">
+        <div class="form h-auto bg-transparent flex flex-col items-center p-5 rounded-md">
+            <div class="close text-white cursor-pointer hover:bg-red-900 h-[50px] w-[50px] flex items-center justify-center rounded-full" id="close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="inp">
+                <input disabled type="text" name="id" id="camperID" placeholder="ID">
+            </div>
+            <div class="inp">
+                <input type="text" name="fullname" id="camperName" placeholder="Name">
+            </div>
+            <div class="inp">
+                <input type="number" name="phone" id="camperPhone" placeholder="Phone">
+            </div>
+            <div class="inp">
+                <input type="email" name="email" id="camperEmail" placeholder="Email">
+            </div>
+            <select name="groupselect" id="camperGroup" class="block py-2.5 px-0 w-full text-sm text-gray-300 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer mb-6 mt-[40px]">
+                <option selected>Elegir el grupo del camper</option>
+                <option value="C4">C4</option>
+                <option value="R4">R4</option>
+            </select>
+            <button id="newCamper" class="border-0 outline-0 w-[288px] mt-[25px] py-2.5 px-0 text-[20px] rounded-[40px] tracking-[1px] cursor-pointer hover:scale-110 text-white">Editar Camper</button>
+        </div>
     </div>
 
-    <div class="hidden modal-new-concept absolute bg-zinc-900 w-screen h-screen z-30" id="addConcept">
-        <h1>Nuevo Concepto</h1>
-        <input type="text" name="description" id="descriptionConcept">
-        <input type="number" name="coins" id="coinsConcept">
-        <select name="typeselect" id="typeConcept" class="mb-1.5">
-            <option selected>Elegir tipo de concepto</option>
-            <option value="sum">Suma</option>
-            <option value="res">Resta</option>
-        </select>
-        <button id="newConcept" class="text-white bg-green-900">Nuevo Concepto</button>
+    <div class="hidden modal absolute bg-zinc-900 w-screen h-screen z-30 opacity-90 flex items-center justify-center" id="addConcept">
+        <div class="form h-auto bg-transparent flex flex-col items-center p-5 rounded-md">
+            <div class="close text-white cursor-pointer hover:bg-red-900 h-[50px] w-[50px] flex items-center justify-center rounded-full" id="close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="inp">
+                <input type="text" name="description" id="descriptionConcept" placeholder="Descripcion">
+            </div>
+            <div class="inp">
+                <input type="number" name="coins" id="coinsConcept" placeholder="CampCoins">
+            </div>
+            <select name="typeselect" id="typeConcept" class="block py-2.5 px-0 w-full text-sm text-gray-300 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer mb-6 mt-[40px]">
+                <option selected>Elegir tipo de concepto</option>
+                <option value="sum">Suma</option>
+                <option value="res">Resta</option>
+            </select>
+            <button id="newConcept" class="border-0 outline-0 w-[288px] mt-[25px] py-2.5 px-0 text-[20px] rounded-[40px] tracking-[1px] cursor-pointer hover:scale-110 text-white">Nuevo Concepto</button>
+            </div>
+        </div>
     </div>
 
-    <div class="hidden modal-new-concept absolute bg-zinc-900 w-screen h-screen z-30" id="addCoins">
-        <h1>Nuevo Concepto</h1>
-        <select name="typeselect" id="addSelect" class="mb-1.5">
-            <option selected>Elegir el concepto</option>
-        </select>
-        <button id="plusCoins" class="text-white bg-green-900">Aceptar</button>
+    <div class="hidden modal absolute bg-zinc-900 w-screen h-screen z-30 opacity-90 flex items-center justify-center"  id="addCoins">
+        <div class="form h-auto bg-transparent flex flex-col items-center p-5 rounded-md">
+            <div class="close text-white cursor-pointer hover:bg-red-900 h-[50px] w-[50px] flex items-center justify-center rounded-full" id="close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <select name="typeselect" id="addSelect" class="block py-2.5 px-0 w-full text-sm text-gray-300 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer mb-6 mt-[40px]">
+                <option selected>Elegir el concepto</option>
+            </select>
+            <button id="plusCoins" class="border-0 outline-0 w-[288px] mt-[25px] py-2.5 px-0 text-[20px] rounded-[40px] tracking-[1px] cursor-pointer hover:scale-110 text-white">Aceptar</button>
+        </div>
     </div>
-    <div class="hidden modal-new-concept absolute bg-zinc-900 w-screen h-screen z-30" id="resCoins">
-        <h1>Nuevo Concepto</h1>
-        <input type="text" name="description" id="descriptionConcept">
-        <input type="number" name="coins" id="coinsConcept">
-        <select name="typeselect" id="resConcept" class="mb-1.5">
+    <div class="hidden modal absolute bg-zinc-900 w-screen h-screen z-30 opacity-90 flex items-center justify-center"  id="resCoins">
+        <div class="form h-auto bg-transparent flex flex-col items-center p-5 rounded-md">
+            <div class="close text-white cursor-pointer hover:bg-red-900 h-[50px] w-[50px] flex items-center justify-center rounded-full" id="close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <select name="typeselect" id="resSelect" class="block py-2.5 px-0 w-full text-sm text-gray-300 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer mb-6 mt-[40px]">
+                <option selected>Elegir el concepto</option>
+            </select>
+            <button id="minusCoins" class="border-0 outline-0 w-[288px] mt-[25px] py-2.5 px-0 text-[20px] rounded-[40px] tracking-[1px] cursor-pointer hover:scale-110 text-white">Aceptar</button>
+        </div>
+    </div>
+    <div class="hidden modal absolute bg-zinc-900 w-screen h-screen z-30 opacity-90 flex items-center justify-center"  id="resCoins">
+        <select name="typeselect" id="resConcept" class="block py-2.5 px-0 w-full text-sm text-gray-300 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer mb-6 mt-[40px]">
             <option selected>Elegir el concepto</option>
         </select>
         <button id="minusCoins" class="text-white bg-green-900">Aceptar</button>
@@ -147,7 +193,7 @@
                         <div class="box box3">
                             <i class="fa-solid fa-scale-balanced"></i>
                             <span class="text">Conceptos</span>
-                            <span class="number" id="total_games"></span>
+                            <span class="number" id="total_concepts"></span>
                         </div>
                     </div>
                 </div>
