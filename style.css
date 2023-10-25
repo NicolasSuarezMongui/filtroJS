@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input {
+    margin-bottom: 5px !important;
+}
+
+nav {
+    transition: all 0.5s ease;
+    border-color: #0aef;
+    box-shadow: inset -10px -1px 15px -9px #0eaf;
+}
+
+nav.close {
+    width: 73px;
+    box-shadow: 0 0 20px 0 #0eaf;
+}
+
+nav #logo_name {
+    transition: all 0.5s ease;
+}
+
+nav.close #logo_name {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#menu-items {
+    height: calc(100% - 100px);
+}
+
+#menu-items li div {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    position: relative;
+    cursor: pointer;
+}
+
+.nav-links li div:hover:before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: #0ef;
+}
+
+#menu-items li div i {
+    font-size: 24px;
+    min-width: 45px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0eaf;
+}
+
+#menu-items li div .link-name{
+    font-size: 18px;
+    font-weight: 400;
+    color: #0eaf;
+    transition: all 0.5s ease;
+}
+
+nav.close li div .link-name {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#menu-items li div .mode-text{
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--black-light-color);
+    transition: all 0.5s ease;
+}
+
+nav.close li div .mode-text {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-links li div:hover i,
+.nav-links li div:hover .link-name {
+    color: #c800ff !important;
+}
+
+.dashboard {
+    width: calc(100% - 250px);
+    transition: all 0.5s ease;
+}
+
+#tachometer {
+    display: flex;
+}
+
+nav.close ~ .dashboard {
+    left: 73px;
+    width: calc(100% - 73px);
+}
+
+.dashboard #top {
+    width: calc(100% - 250px);
+    transition: all 0.5s ease;
+    z-index: 10;
+}
+
+nav.close ~.dashboard #top {
+    left: 80px;
+    width: calc(100% - 80px);
+}
+
+#top .search-box i {
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.dash-content .boxes .box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    width: calc(100% / 3 - 15px);
+    padding: 15px 20px;
+    background-color: #0ef;
+    transition: all 0.5s ease;
+}
+
+.boxes .box i{
+    font-size: 35px;
+    color: var(--text-color);
+}
+
+.boxes .box .text{
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.boxes .box .number {
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.clients .boxes {
+    overflow: auto;
+    height: 77vh;
+    width: auto;
+}
+
+::-webkit-scrollbar{
+    width: 6px;
+    margin-left: 1px;
+}
+::-webkit-scrollbar-track{
+    background: transparent;
+    border-radius: 12px;
+}
+::-webkit-scrollbar-thumb{
+    background: #0eaf;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: #000000;
+}

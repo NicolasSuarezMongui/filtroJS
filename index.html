@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="h-screen w-screen">
+
+    <div class="hidden modal-new-camper absolute bg-zinc-900 w-screen h-screen z-30" id="addCamper">
+        <input type="text" name="id" id="camperID">
+        <input type="text" name="fullname" id="camperName">
+        <input type="number" name="phone" id="camperPhone">
+        <input type="email" name="email" id="camperEmail">
+        <select name="groupselect" id="camperGroup" class="mb-1.5">
+            <option selected>Elegir el grupo del camper</option>
+            <option value="C4">C4</option>
+            <option value="R4">R4</option>
+        </select>
+        <button id="newCamper" class="text-white bg-green-900">Añadir Camper</button>
+    </div>
+    <div class="hidden modal-new-camper absolute bg-zinc-900 w-screen h-screen z-30" id="editCamper">
+        <h1>Editar</h1>
+        <input disabled type="text" name="id" id="camperID">
+        <input type="text" name="fullname" id="camperName">
+        <input type="number" name="phone" id="camperPhone">
+        <input type="email" name="email" id="camperEmail">
+        <select name="groupselect" id="camperGroup" class="mb-1.5">
+            <option selected>Elegir el grupo del camper</option>
+            <option value="C4">C4</option>
+            <option value="R4">R4</option>
+        </select>
+        <button id="updateCamper" class="text-white bg-green-900">Editar Camper</button>
+    </div>
+
+    <div class="hidden modal-new-concept absolute bg-zinc-900 w-screen h-screen z-30" id="addConcept">
+        <h1>Nuevo Concepto</h1>
+        <input type="text" name="description" id="descriptionConcept">
+        <input type="number" name="coins" id="coinsConcept">
+        <select name="typeselect" id="typeConcept" class="mb-1.5">
+            <option selected>Elegir tipo de concepto</option>
+            <option value="sum">Suma</option>
+            <option value="res">Resta</option>
+        </select>
+        <button id="newConcept" class="text-white bg-green-900">Nuevo Concepto</button>
+    </div>
+
+    <div class="hidden modal-new-concept absolute bg-zinc-900 w-screen h-screen z-30" id="addCoins">
+        <h1>Nuevo Concepto</h1>
+        <select name="typeselect" id="addSelect" class="mb-1.5">
+            <option selected>Elegir el concepto</option>
+        </select>
+        <button id="plusCoins" class="text-white bg-green-900">Aceptar</button>
+    </div>
+    <div class="hidden modal-new-concept absolute bg-zinc-900 w-screen h-screen z-30" id="resCoins">
+        <h1>Nuevo Concepto</h1>
+        <input type="text" name="description" id="descriptionConcept">
+        <input type="number" name="coins" id="coinsConcept">
+        <select name="typeselect" id="resConcept" class="mb-1.5">
+            <option selected>Elegir el concepto</option>
+        </select>
+        <button id="minusCoins" class="text-white bg-green-900">Aceptar</button>
+    </div>
+
+    <div class="w-full h-full bg-[#081b29] text-white">
+        <nav class="fixed top-0 left-0 h-full w-64 px-[14px] py-2.5 border-r border-r-solid">
+            <div class="flex items-center" id="logo-name">
+                <div class="logo-image">
+                    <img src="" alt="">
+                </div> 
+                <span class="text-[22px] font-bold mx-auto text-center" id="logo_name">Campus<br>Camp Coins</span>
+            </div>
+            <div class="mt-[40px] flex flex-col justify-between" id="menu-items">
+                <ul class="nav-links">
+                    <li id="_home">
+                        <div>
+                            <i class="fa-solid fa-house"></i>
+                            <span class="link-name">Panel</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div id="_coins">
+                            <i class="fa-solid fa-coins"></i>
+                            <span class="link-name">CampCoins</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div id="_loyalty">
+                            <i class="fa-solid fa-ranking-star"></i>
+                            <span class="link-name">Fidelización</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div id="_campers">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <span class="link-name">Campers</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div id="_concepts">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                            <span class="link-name">Conceptos</span>
+                        </div>
+                    </li>
+                </ul>
+
+                <ul class="logout-mode pt-2.5 border-t border-t-[#0eaf]">
+                    <li>
+                        <div>
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <span class="link-name">Cerrar Sesión</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <section class="dashboard relative left-[250px] h-min-screen px-[14px] py-2.5">
+            <div class="fixed top-0 left-[250px] flex justify-between items-center px-[14px] py-2.5" id="top">
+                <i class="fa-solid fa-bars sidebar-toggle text-[26px] cursor-pointer text-[#0aef]" id="menu"></i>
+                <div class="search-box relative h-[45px] max-w-[600px] w-full mx-[30px] text-[#0aef]">
+                    <i class="fa-solid fa-magnifying-glass absolute left-[15px] text-[22px] top-1/2"></i>
+                    <input type="text" placeholder="Search here..."
+                        class="absolute border border-[#0aef] bg-[#081b29] pr-[25px] pl-[50px] rounded h-full w-full text-[15px] font-normal outline-0">
+                    <img src="" alt="" class="w-[40px] rounded-full">
+                </div>
+            </div>
+            <div class="active dash-content pt-14" id="home_content">
+                <div class="overview">
+                    <div class="title flex items-center mt-[60px] mb-[30px]">
+                        <i class="fa-solid fa-gauge-simple-high relative h-[35px] w-[35px] rounded-md bg-[#0aef] items-center justify-center text-[24px]"
+                            id="tachometer"></i>
+                        <span class="text text-[24px] font-medium ml-2.5">Panel</span>
+                    </div>
+                    <div class="boxes flex items-center justify-between flex-wrap">
+                        <div class="box box1">
+                            <i class="fa-solid fa-user"></i>
+                            <span class="text">Total Campers</span>
+                            <span class="number" id="total_campers"></span>
+                        </div>
+                        <div class="box box2">
+                            <i class="fa-solid fa-sack-dollar"></i>
+                            <span class="text">CampCoins</span>
+                            <span class="number" id="total_coins"></span>
+                        </div>
+                        <div class="box box3">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                            <span class="text">Conceptos</span>
+                            <span class="number" id="total_games"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden campers pt-14" id="campers_content">
+                <div class="overview">
+                    <div class="flex items-center mt-[60px] mb-[30px] w-auto justify-between">
+                        <div class="title flex items-center">
+                            <i class="fa-solid fa-users relative h-[45px] w-[45px] rounded-md bg-[#0aef] items-center justify-center text-[24px]"
+                                id="tachometer"></i>
+                            <span class="text text-[24px] font-medium ml-2.5">Campers</span>
+                        </div>
+                        <div class="options flex items-center text-2xl">
+                            <div
+                                class="ordered flex items-center justify-center mx-1.5 hover:bg-red-900 w-12 h-12 rounded-lg cursor-pointer">
+                                <i class="fa-solid fa-arrow-down-short-wide"></i>
+                            </div>
+                            <div
+                                class="new-client flex items-center justify-center mx-1.5 hover:bg-red-900 w-12 h-12 rounded-lg cursor-pointer" id="btnAddCamper">
+                                <i class="fa-solid fa-circle-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boxes flex flex-col" id="campersTable">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="hidden coins pt-14" id="coins_content">
+                <div class="overview">
+                    <div class="flex items-center mt-[60px] mb-[30px] w-auto justify-between">
+                        <div class="title flex items-center">
+                            <i class="fa-solid fa-coins relative h-[45px] w-[45px] rounded-md bg-[#0aef] items-center justify-center text-[24px]"
+                                id="tachometer"></i>
+                            <span class="text text-[24px] font-medium ml-2.5">Coins</span>
+                        </div>
+                        <div class="options flex items-center text-2xl">
+                            <div
+                                class="ordered flex items-center justify-center mx-1.5 hover:bg-red-900 w-12 h-12 rounded-lg cursor-pointer">
+                                <i class="fa-solid fa-arrow-down-short-wide"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boxes flex flex-col" id="conisList">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="hidden loyalty pt-14" id="loyalty_content">
+                <div class="overview">
+                    <div class="flex items-center mt-[60px] mb-[30px] w-auto justify-between">
+                        <div class="title flex items-center">
+                            <i class="fa-solid fa-crown relative h-[45px] w-[45px] rounded-md bg-[#0aef] items-center justify-center text-[24px]"
+                                id="tachometer"></i>
+                            <span class="text text-[24px] font-medium ml-2.5">Loyalty</span>
+                        </div>
+                        <div class="options flex items-center text-2xl">
+                            <div
+                                class="ordered flex items-center justify-center mx-1.5 hover:bg-red-900 w-12 h-12 rounded-lg cursor-pointer">
+                                <i class="fa-solid fa-arrow-down-short-wide"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boxes flex flex-col" id="loyaltyList">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="hidden conceptos pt-14" id="concepts_content">
+                <div class="overview">
+                    <div class="flex items-center mt-[60px] mb-[30px] w-auto justify-between">
+                        <div class="title flex items-center">
+                            <i class="fa-solid fa-ruler relative h-[45px] w-[45px] rounded-md bg-[#0aef] items-center justify-center text-[24px]"
+                                id="tachometer"></i>
+                            <span class="text text-[24px] font-medium ml-2.5">Conceptos</span>
+                        </div>
+                        <div class="options flex items-center text-2xl">
+                            <div
+                                class="ordered flex items-center justify-center mx-1.5 hover:bg-red-900 w-12 h-12 rounded-lg cursor-pointer">
+                                <i class="fa-solid fa-arrow-down-short-wide"></i>
+                            </div>
+                            <div
+                                class="new-game flex items-center justify-center mx-1.5 hover:bg-red-900 w-12 h-12 rounded-lg cursor-pointer" id="btnAddConcept">
+                                <i class="fa-solid fa-circle-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="boxes flex flex-col" id="conceptsTable">
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="https://kit.fontawesome.com/1d780724e5.js" crossorigin="anonymous"></script>
+    </div>
+    <script type="module" src="./src/scripts/app.js"></script>
+</body>
+</html>
